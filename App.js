@@ -17,14 +17,14 @@ function App() {
   useEffect(() => {
     const sendCartData = async () => {
       dispatch(
-        uiActions.shownotification({
+        uiActions.showNotification({
           status: "pending",
           title: "Sending...",
           message: "Sending cart data",
         })
       );
       const response = await fetch(
-        `https://expense-tracker-62dd0-default-rtdb.firebaseio.com/cart.json`,
+        `https://react-http-f04a8-default-rtdb.firebaseio.com/cart.json`,
         {
           method: "PUT",
           headers: {
@@ -39,7 +39,7 @@ function App() {
       }
 
       dispatch(
-        uiActions.shownotification({
+        uiActions.showNotification({
           status: "success",
           title: "Success!",
           message: "Sent cart data successfully",
@@ -54,7 +54,7 @@ function App() {
 
     sendCartData().catch((error) => {
       dispatch(
-        uiActions.shownotification({
+        uiActions.showNotification({
           status: "error",
           title: "Error!",
           message: "Sending cart data failed!",
